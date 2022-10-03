@@ -1,23 +1,9 @@
 $(document).ready(function () {
-  jQuery.validator.addMethod(
-    "lettersonly",
-    function (value, element) {
-      return this.optional(element) || /^[a-z ]+$/.test(value);
-    },
-    "Letters only please"
-  );
-  jQuery.validator.addMethod(
-    "minlength5",
-    function (value, element) {
-      return this.optional(element) || (value.trim().length >= 5);
-    },
-    "Minimum 5 characters without space"
-  );
+  
   $(".contact-forms").validate({
     rules: {
       name: {
-        minlength5: true,
-        lettersonly: true,
+       lettersonly: true,
         required: true,
         minlength: 4,
       },
@@ -32,7 +18,6 @@ $(document).ready(function () {
         maxlength: 10,
       },
       message: {
-        minlength5: true,
         required: true,
         minlength: 10,
         maxlength: 200,
@@ -40,18 +25,22 @@ $(document).ready(function () {
     },
     messages: {
       name: {
-        minlength: "Please Enter Your Full Name",
+        minlength: "Minimum 5 characters without space",
+        required: "This field is required",
       },
       email: {
         email: "Please enter a valid Email id",
+        required: "This field is required"
       },
       contact: {
         minlength: "Please enter a valid contact number",
         maxlength: "Please enter a valid contact number",
+        required: "This field is required"
       },
       message: {
         minlength: "Its too short! minimum 10 characters",
         maxlength: "Oh no! it's too large",
+        required: "This field is required"
       },
     },
     submitHandler: function (form) {
